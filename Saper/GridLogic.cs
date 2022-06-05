@@ -40,6 +40,7 @@ namespace Saper
                 }
                 fillCellContent(clickedCell);
                 showSafeCellsAround(clickedCell);
+                gameScoreUpdate(clickedCell);
             }
         }
         private static void onRightCellClicked(CellButton clickedCell)
@@ -53,6 +54,7 @@ namespace Saper
             {
                 clickedCell.BackColor = Color.LimeGreen;
                 clickedCell.flaged = true;
+                gameScoreUpdate(clickedCell);
             }
         }
 
@@ -153,6 +155,25 @@ namespace Saper
                 }
             }
             return count;
+        }
+
+        private static void gameScoreUpdate(CellButton clickedCell)
+        {
+            int correctFlags = 0;
+
+            foreach (CellButton currentCell in Grid.gridTab)
+            {
+                if (currentCell.getCellType() == "Mine" && currentCell.flaged)
+                {
+                    correctFlags++;
+                }
+
+                if (correctFlags == Grid.minesNumber)
+                {
+                    MessageBox.Show("Gratulacje, odminowałeś planszę!");
+                    break;
+                }
+            }
         }
     }
 }
