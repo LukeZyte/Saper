@@ -11,12 +11,14 @@ namespace Saper
         public static CellButton[,] gridTab;
         public static int minesNumber;
         public static int gridSize;
+        public static bool freezeGrid = false;
 
         public static void InitMap(Form current, int _gridSize, int cellSize, int _minesNumber)
         {
             gridSize = _gridSize;
             gridTab = new CellButton[gridSize, gridSize];
             minesNumber = _minesNumber;
+            freezeGrid = false;
 
             for (int row = 0; row < gridSize; row++)
             {
@@ -26,11 +28,8 @@ namespace Saper
                     {
                         Size = new Size(cellSize, cellSize),
                         Location = new Point(col * cellSize + 5, row * cellSize + 30),
-                        //FlatStyle = FlatStyle.Standard,
                         BackColor = Color.White,
                     };
-                    //cell.FlatAppearance.BorderSize = 1;
-                    //cell.FlatAppearance.BorderColor = Color.Gray;
                     gridTab[row, col] = cell;
                     current.Controls.Add(gridTab[row, col]);
                     cell.MouseUp += new MouseEventHandler(GridLogic.onCellClicked);

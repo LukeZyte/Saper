@@ -1,7 +1,7 @@
 namespace Saper
 {
     public partial class Saper : Form
-    {
+    { 
         public Saper()
         {
             InitializeComponent();
@@ -51,6 +51,11 @@ namespace Saper
         private void Saper_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.LightGray;
+        }
+
+        private void Info_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The game \"Sapers\" was written in C# using WindowsForms \n\n05.06.2022\nAuthor: £ukasz Jarz¹b", "About Saper");
         }
     }
 }

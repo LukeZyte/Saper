@@ -37,6 +37,7 @@
             this.hardDiff = new System.Windows.Forms.ToolStripMenuItem();
             this.expertDiff = new System.Windows.Forms.ToolStripMenuItem();
             this.hardcoreDiff = new System.Windows.Forms.ToolStripMenuItem();
+            this.Info = new System.Windows.Forms.ToolStripButton();
             this.Topbar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,8 @@
             this.Topbar.CanOverflow = false;
             this.Topbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.Topbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.Info});
             this.Topbar.Location = new System.Drawing.Point(0, 0);
             this.Topbar.Name = "Topbar";
             this.Topbar.Size = new System.Drawing.Size(612, 25);
@@ -54,6 +56,7 @@
             // 
             // toolStripDropDownButton1
             // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox1,
             this.easyDiff,
@@ -64,7 +67,7 @@
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(93, 22);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(77, 22);
             this.toolStripDropDownButton1.Text = "New game";
             // 
             // toolStripTextBox1
@@ -112,6 +115,17 @@
             this.hardcoreDiff.Text = "Hardcore";
             this.hardcoreDiff.Click += new System.EventHandler(this.hardcoreDiff_Click);
             // 
+            // Info
+            // 
+            this.Info.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Info.Image = ((System.Drawing.Image)(resources.GetObject("Info.Image")));
+            this.Info.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Info.Name = "Info";
+            this.Info.Size = new System.Drawing.Size(44, 22);
+            this.Info.Text = "About";
+            this.Info.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.Info.Click += new System.EventHandler(this.Info_Click);
+            // 
             // Saper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -121,6 +135,7 @@
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(612, 637);
             this.Controls.Add(this.Topbar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Saper";
             this.Text = "Saper";
             this.Load += new System.EventHandler(this.Saper_Load);
@@ -141,5 +156,6 @@
         private ToolStripMenuItem hardDiff;
         private ToolStripMenuItem expertDiff;
         private ToolStripMenuItem hardcoreDiff;
+        private ToolStripButton Info;
     }
 }

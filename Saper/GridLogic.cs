@@ -12,15 +12,18 @@ namespace Saper
 
         public static void onCellClicked(object sender, MouseEventArgs e)
         {
-            CellButton clickedCell = sender as CellButton;
-            switch (e.Button.ToString())
+            if (!Grid.freezeGrid)
             {
-                case "Right":
-                    onRightCellClicked(clickedCell);
-                    break;
-                case "Left":
-                    onLeftCellClicked(clickedCell);
-                    break;
+                CellButton clickedCell = sender as CellButton;
+                switch (e.Button.ToString())
+                {
+                    case "Right":
+                        onRightCellClicked(clickedCell);
+                        break;
+                    case "Left":
+                        onLeftCellClicked(clickedCell);
+                        break;
+                }
             }
         }
 
@@ -30,6 +33,7 @@ namespace Saper
             {
                 showAllMines();
                 clickedCell.BackColor = Color.Black;
+                Grid.freezeGrid = true;
             }
             else
             {
@@ -126,7 +130,6 @@ namespace Saper
                 {
                     for (int y = Ypos - 1; y <= Ypos + 1; y++)
                     {
-                        // && ((x < Xpos && y == Ypos) || (x == Xpos && y < Ypos) || (x > Xpos && y == Ypos) || (x == Xpos && y > Ypos))
                         if (x >= 0 && y >= 0 && x < Grid.gridSize && y < Grid.gridSize && Grid.gridTab[y, x].getCellType() == "default")
                         {
                             Grid.gridTab[y, x].BackColor = Color.LightGray;
@@ -170,7 +173,8 @@ namespace Saper
 
                 if (correctFlags == Grid.minesNumber)
                 {
-                    MessageBox.Show("Gratulacje, odminowałeś planszę!");
+                    MessageBox.Show("Congratulations, You have filled the board!", "You won!");
+                    Grid.freezeGrid = true;
                     break;
                 }
             }
