@@ -23,6 +23,9 @@ namespace Saper
                     case "Left":
                         onLeftCellClicked(clickedCell);
                         break;
+                    case "Middle":
+                        onMiddleCellClicked(clickedCell);
+                        break;
                 }
             }
         }
@@ -66,6 +69,59 @@ namespace Saper
                 clickedCell.UseCompatibleTextRendering = true;
                 clickedCell.flaged = true;
                 gameScoreUpdate(clickedCell);
+            }
+        }
+
+        private static void onMiddleCellClicked(CellButton clickedCell)
+        {
+            if (clickedCell.getCellType() == "Clicked")
+            {
+                int Xpos = clickedCell.getCellCol();
+                int Ypos = clickedCell.getCellRow();
+                // THIS METHOD ALLOWED CHEATING
+                /*bool allowShow = true;
+
+                for (int x = Xpos - 1; x <= Xpos + 1; x++)
+                {
+                    for (int y = Ypos - 1; y <= Ypos + 1; y++)
+                    {
+                        // && Grid.gridTab[y, x].getCellType() == "Mine" && Grid.gridTab[y, x].flaged == false
+                        if (x >= 0 && y >= 0 && x < Grid.gridSize && y < Grid.gridSize)
+                        {
+                            allowShow = false;
+                            *//*Grid.gridTab[y, x].BackColor = Color.LightGray;
+                            fillCellContent(Grid.gridTab[y, x]);
+                            showSafeCellsAround(Grid.gridTab[y, x]);*//*
+                        }
+                    }
+                }*/
+
+                //if (allowShow)
+                //{
+                for (int x = Xpos - 1; x <= Xpos + 1; x++)
+                {
+                    for (int y = Ypos - 1; y <= Ypos + 1; y++)
+                    {
+                        if (x >= 0 && y >= 0 && x < Grid.gridSize && y < Grid.gridSize)
+                        {
+                            if (Grid.gridTab[y, x].flaged == false && Grid.gridTab[y, x].getCellType() != "Mine")
+                            {
+                                fillCellContent(Grid.gridTab[y, x]);
+                                if (Grid.gridTab[y, x].Text == "")
+                                {
+                                    showSafeCellsAround(Grid.gridTab[y, x]);
+                                }
+                            }
+
+                            if (Grid.gridTab[y, x].getCellType() == "Mine" && Grid.gridTab[y, x].flaged == false)
+                            {
+                                showAllMines();
+                                Grid.freezeGrid = true;
+                            }
+                        }
+                    }
+                }
+                //}
             }
         }
 
