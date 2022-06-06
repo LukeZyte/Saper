@@ -53,10 +53,17 @@ namespace Saper
             {
                 clickedCell.BackColor = Color.White;
                 clickedCell.flaged = false;
+                clickedCell.ForeColor = Color.White;
+                clickedCell.Text = "";
             }
             else if (clickedCell.getCellType() != "Clicked")
             {
                 clickedCell.BackColor = Color.LimeGreen;
+                clickedCell.ForeColor = Color.Lime;
+                clickedCell.Text = "ᐅ";
+                clickedCell.Font = new Font(clickedCell.Font.FontFamily.Name, 16, FontStyle.Bold);
+                clickedCell.TextAlign = ContentAlignment.MiddleCenter;
+                clickedCell.UseCompatibleTextRendering = true;
                 clickedCell.flaged = true;
                 gameScoreUpdate(clickedCell);
             }
@@ -69,6 +76,15 @@ namespace Saper
                 if (cell.getCellType() == "Mine")
                 {
                     cell.BackColor = Color.Red;
+                }
+
+                if (cell.getCellType() == "default" && cell.flaged == true)
+                {
+                    cell.Text = "✖";
+                    cell.ForeColor = Color.Black;
+                    cell.Font = new Font(cell.Font.FontFamily.Name, 16, FontStyle.Bold);
+                    cell.TextAlign = ContentAlignment.MiddleCenter;
+                    cell.UseCompatibleTextRendering = true;
                 }
             }
         }
