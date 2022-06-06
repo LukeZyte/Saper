@@ -116,6 +116,7 @@ namespace Saper
                             if (Grid.gridTab[y, x].getCellType() == "Mine" && Grid.gridTab[y, x].flaged == false)
                             {
                                 showAllMines();
+                                Grid.gridTab[y, x].BackColor = Color.Black;
                                 Grid.freezeGrid = true;
                             }
                         }
